@@ -60,16 +60,31 @@ const Nav = () => {
             </div>
 
             {/* Mobile Navigation */}
-
             <div className='sm:hidden flex relative'>
                 {isUserLoggedIn ?
                     (
                         <div className='flex'>
-
                             <Image src="/assets/images/logo.svg" width={37} height={37}
-                                className='rounded-full' alt='profile' onClick={() => setToggleDropDown((prev) => !prev)} />
+                                className='rounded-full' alt='profile'
+                                onClick={() => setToggleDropDown((prev) => !prev)} />
+                            {/* Drop Down Mobile Menu */}
+                            {toggleDropDown && (
+                                <div className='dropdown'>
+                                    <Link href="/profile" className='dropdown_link'
+                                        onClick={() => setToggleDropDown(false)}>
+                                        My Profile
+                                    </Link>
+                                    <Link href="/create-prompt" className='dropdown_link'
+                                        onClick={() => setToggleDropDown(false)}>
+                                        Create Prompt
+                                    </Link>
 
-
+                                    <button type='button' className='mt-5 w-full black_btn'
+                                        onClick={() => { setToggleDropDown(false); signOut(); }}>
+                                        Sign Out
+                                    </button>
+                                </div>
+                            )}
                         </div>
                     ) :
                     (<>
@@ -80,7 +95,6 @@ const Nav = () => {
                                 Sign In
                             </button>
                         )
-
                         )}
                     </>)}
             </div>
