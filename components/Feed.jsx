@@ -1,6 +1,8 @@
 "use client";
-import { useState, useEffect } from 'react';
-import PromptCard from './PromptCard';
+
+import { useState, useEffect } from "react";
+
+import PromptCard from "./PromptCard";
 
 const PromptCardList = ({ data, handleTagClick }) => {
     return (
@@ -15,8 +17,8 @@ const PromptCardList = ({ data, handleTagClick }) => {
         </div>
     );
 };
-const Feed = () => {
 
+const Feed = () => {
     const [allPosts, setAllPosts] = useState([]);
 
     // Search states
@@ -27,12 +29,14 @@ const Feed = () => {
     const fetchPosts = async () => {
         const response = await fetch("/api/prompt");
         const data = await response.json();
+
         setAllPosts(data);
     };
 
     useEffect(() => {
         fetchPosts();
     }, []);
+
     const filterPrompts = (searchtext) => {
         const regex = new RegExp(searchtext, "i"); // 'i' flag for case-insensitive search
         return allPosts.filter(
@@ -88,4 +92,5 @@ const Feed = () => {
         </section>
     );
 };
+
 export default Feed;
