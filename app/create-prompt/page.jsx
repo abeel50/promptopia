@@ -18,6 +18,7 @@ const CreatePrompt = () => {
     const createPrompt = async (e) => {
         e.preventDefault();
         setSubmitting(true);
+        console.log("L:21 create Prompt==>", session);
         try {
             const response = await fetch('/api/prompt/new',
                 {
